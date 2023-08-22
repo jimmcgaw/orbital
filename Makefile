@@ -11,3 +11,5 @@ stop:
 restart:
 	docker compose restart
 
+index:
+	python indexwiki.py

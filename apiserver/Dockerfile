@@ -15,6 +15,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+RUN python manage.py build_index
+
 EXPOSE 8000
 
 CMD ["gunicorn", "apiserver.wsgi", "-b", "0.0.0.0:8000"]

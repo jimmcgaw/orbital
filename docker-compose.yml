@@ -1,28 +1,28 @@
-version: '3.1'
+version: '3.8'
 
 services:
-  searchindex:
-    image: opensearchproject/opensearch
-    volumes:
-        - "./opensearch.yml:/usr/share/opensearch/config/opensearch.yml"
-        - "searchindexdata:/usr/share/opensearch/data"
-        # - "./certs:/usr/share/opensearch/config/certificates:ro"
-    ports:
-      - 9200:9200
-      # - 9600:9600 # required for Performance Analyzer
-    environment:
-      - discovery.type=single-node
-    # healthcheck:
-    #   test: [ "CMD", "curl",  "--fail" , "http://searchindex:9200/_cluster/health?wait_for_status=yellow", "||", "exit", "1" ]
-    #   interval: 5s
-    #   timeout: 60s
-  searchdashboard:
-    image: opensearchproject/opensearch-dashboards
-    ports:
-      - 5601:5601
-    volumes:
-      # - "./certs:/usr/share/opensearch-dashboards/config/certificates:ro"
-      - "./opensearch-dashboards.yml:/usr/share/opensearch-dashboards/config/opensearch_dashboards.yml"
+  # searchindex:
+  #   image: opensearchproject/opensearch
+  #   volumes:
+  #       - "./opensearch.yml:/usr/share/opensearch/config/opensearch.yml"
+  #       - "searchindexdata:/usr/share/opensearch/data"
+  #       # - "./certs:/usr/share/opensearch/config/certificates:ro"
+  #   ports:
+  #     - 9200:9200
+  #     # - 9600:9600 # required for Performance Analyzer
+  #   environment:
+  #     - discovery.type=single-node
+  #   # healthcheck:
+  #   #   test: [ "CMD", "curl",  "--fail" , "http://searchindex:9200/_cluster/health?wait_for_status=yellow", "||", "exit", "1" ]
+  #   #   interval: 5s
+  #   #   timeout: 60s
+  # searchdashboard:
+  #   image: opensearchproject/opensearch-dashboards
+  #   ports:
+  #     - 5601:5601
+  #   volumes:
+  #     # - "./certs:/usr/share/opensearch-dashboards/config/certificates:ro"
+  #     - "./opensearch-dashboards.yml:/usr/share/opensearch-dashboards/config/opensearch_dashboards.yml"
   apiserver: 
     build:
       context: apiserver

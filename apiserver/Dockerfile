@@ -15,6 +15,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+RUN echo 'alias ll="ls -latr"' >> ~/.bashrc
+
 RUN python manage.py build_index
 
 EXPOSE 8000

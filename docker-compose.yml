@@ -33,6 +33,13 @@ services:
     # depends_on:
     #   searchindex:
     #    condition: service_healthy
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+    ports:
+      - 9090:9090
 
 volumes:
-  searchindexdata:
+  prometheus:
+  # searchindexdata:

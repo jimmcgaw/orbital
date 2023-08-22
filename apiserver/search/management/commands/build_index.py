@@ -63,6 +63,9 @@ class Command(BaseCommand):
             if indexed_count % 500 == 0:
                 percent = round(float(indexed_count) / float(file_count) * 100, 2)
                 self.stdout.write(f"Indexed {indexed_count} files ({percent}% completed.)")
+            elif indexed_count == file_count:
+                self.stdout.write(f"Indexed {indexed_count} files (100.00% completed.)")
 
+        self.stdout.write("Finalizing indexing process...")
         index_writer.commit()
         self.stdout.write("Indexing process completed!")
